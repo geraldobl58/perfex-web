@@ -10,7 +10,7 @@ interface NavItemProps {
 export function NavLink({ to, icon, label }: NavItemProps) {
   const { pathname } = useLocation();
   return (
-    <li className="p-2 flex flex-col gap-2 space-y-2">
+    <li className="px-2 py-1 flex flex-col gap-2 space-y-2">
       <Link
         to={to}
         className={cn(
