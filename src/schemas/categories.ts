@@ -3,6 +3,7 @@ import { z } from "zod";
 export type FormSchema = z.infer<typeof formSchema>;
 
 export const formSchema = z.object({
+  id: z.string().optional(),
   title: z
     .string()
     .min(2, {
