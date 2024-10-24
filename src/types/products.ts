@@ -1,25 +1,30 @@
-interface ProductsData {
+import { ProductStatus } from "@/components/products/products-status";
+
+export interface Product {
   id?: string;
   title: string;
   description: string;
   price: number;
   stock: number;
-  items: number;
-  status: boolean;
-  createdAt: string;
-  updatedAt: string;
+  status: ProductStatus;
+  createdAt?: string | null;
+  updatedAt?: string | null;
   categoryId: string;
   category: {
     id: string;
     title: string;
-    createdAt: string;
-    updatedAt: string;
+    createdAt?: string | null;
+    updatedAt?: string | null;
   };
+
+  total?: number;
+  page?: number;
+  limit?: number;
 }
 
-export interface Product {
-  total: number;
+export interface GetProductsQuery {
   page: number;
   limit: number;
-  data: ProductsData[];
+  title?: string | null;
+  status?: string | null;
 }
