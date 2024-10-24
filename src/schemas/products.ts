@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 export type ProductFormSchema = z.infer<typeof productFormSchema>;
+export type ProductFilterSchema = z.infer<typeof productFilterSchema>;
 
 export const productFormSchema = z.object({
   id: z.string().optional(),
@@ -11,16 +12,20 @@ export const productFormSchema = z.object({
     message: "A descrição precisa conter pelo menos 10 caracteres!",
   }),
   price: z.number().min(1, {
-    message: "O preço precisa ser maior que 0!",
+    message: "O preço precisa ser maior que 1!",
   }),
   stock: z.number().min(1, {
-    message: "O estoque precisa ser maior que 0!",
+    message: "O estoque precisa ser maior que 1!",
   }),
-  items: z.number().min(1, {
-    message: "O número de itens precisa ser maior que 0!",
+  status: z.string().min(1, {
+    message: "Selecione o status da produto!",
   }),
-  status: z.boolean(),
   categoryId: z.string().min(1, {
     message: "Selecione uma categoria!",
   }),
+});
+
+export const productFilterSchema = z.object({
+  title: z.string().optional(),
+  status: z.string().optional(),
 });
